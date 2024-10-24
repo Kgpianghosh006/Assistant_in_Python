@@ -17,7 +17,7 @@ def processCommand(c):
         import requests
         response = requests.get(url=f'https://www.google.com/search?q={website}&ln=en')
         soup = BeautifulSoup(response.text, 'html.parser')
-        print(soup.text)
+        speak(soup.text)
 
 
 if __name__ == "__main__" :
