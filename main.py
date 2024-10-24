@@ -2,6 +2,8 @@ import speech_recognition as sr
 import pyttsx3
 from google.cloud import speech
 import webbrowser
+from bs4 import BeautifulSoup
+import requests
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
@@ -13,8 +15,6 @@ def speak(text):
 def processCommand(c):
     if c.lower().startswith('open'):
         website = c.lower().split(' ')[1]
-        from bs4 import BeautifulSoup
-        import requests
         response = requests.get(url=f'https://www.google.com/search?q={website}&ln=en')
         soup = BeautifulSoup(response.text, 'html.parser')
         speak(soup.text)
